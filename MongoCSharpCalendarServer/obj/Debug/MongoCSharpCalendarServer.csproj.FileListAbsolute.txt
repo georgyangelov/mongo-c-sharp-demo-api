@@ -1,0 +1,17 @@
+C:\dev\MongoCSharpCalendarServer\MongoCSharpCalendarServer\bin\MongoCSharpCalendarServer.dll.config
+C:\dev\MongoCSharpCalendarServer\MongoCSharpCalendarServer\bin\MongoCSharpCalendarServer.dll
+C:\dev\MongoCSharpCalendarServer\MongoCSharpCalendarServer\bin\MongoCSharpCalendarServer.pdb
+C:\dev\MongoCSharpCalendarServer\MongoCSharpCalendarServer\bin\MongoDB.Bson.dll
+C:\dev\MongoCSharpCalendarServer\MongoCSharpCalendarServer\bin\MongoDB.Driver.dll
+C:\dev\MongoCSharpCalendarServer\MongoCSharpCalendarServer\bin\Nancy.dll
+C:\dev\MongoCSharpCalendarServer\MongoCSharpCalendarServer\bin\Nancy.Hosting.Aspnet.dll
+C:\dev\MongoCSharpCalendarServer\MongoCSharpCalendarServer\bin\MongoDB.Bson.xml
+C:\dev\MongoCSharpCalendarServer\MongoCSharpCalendarServer\bin\MongoDB.Driver.xml
+C:\dev\MongoCSharpCalendarServer\MongoCSharpCalendarServer\bin\Nancy.xml
+C:\dev\MongoCSharpCalendarServer\MongoCSharpCalendarServer\bin\Nancy.Hosting.Aspnet.xml
+C:\dev\MongoCSharpCalendarServer\MongoCSharpCalendarServer\obj\Debug\MongoCSharpCalendarServer.dll
+C:\dev\MongoCSharpCalendarServer\MongoCSharpCalendarServer\obj\Debug\MongoCSharpCalendarServer.pdb
+C:\dev\MongoCSharpCalendarServer\MongoCSharpCalendarServer\obj\Debug\MongoCSharpCalendarServer.csprojResolveAssemblyReference.cache
+C:\dev\MongoCSharpCalendarServer\MongoCSharpCalendarServer\bin\Nancy.Serialization.JsonNet.dll
+C:\dev\MongoCSharpCalendarServer\MongoCSharpCalendarServer\bin\Newtonsoft.Json.dll
+C:\dev\MongoCSharpCalendarServer\MongoCSharpCalendarServer\bin\Newtonsoft.Json.xml
