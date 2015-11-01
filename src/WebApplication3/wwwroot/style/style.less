@@ -1,0 +1,415 @@
+@green:  #449d44;
+@blue:   #428bca;
+@orange: #d58512;
+@red:    #d43f3a;
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background-color: #e8e8e8;
+    display: flex;
+    justify-content: center;
+
+    background-image: url('../images/ocean.jpg');
+    background-position: center center;
+}
+
+calendar {
+    width: 900px;
+    height: 500px;
+    align-self: center;
+
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    box-shadow: 0 20px 100px rgba(0, 0, 0, 0.3);
+
+    position: relative;
+    background: inherit;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: inherit;
+        -webkit-filter: blur(10px) saturate(2);
+    }
+
+    table {
+        position: relative;
+
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 5px;
+    }
+
+    .months {
+        background: linear-gradient(to bottom, #a90329 0%, #8f0222 44%, #6d0019 100%);
+        color: white;
+        font-size: 25px;
+
+        text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.6);
+
+        > td:first-child {
+            border-top-left-radius: 5px;
+        }
+
+        > td:last-child {
+            border-top-right-radius: 5px;
+        }
+
+        > .other a {
+            color: white;
+            opacity: .5;
+            text-decoration: none;
+            font-size: 20px;
+            cursor: pointer;
+
+            transition: opacity .3s;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+    .day_names {
+        height: 40px;
+        font-size: 16px;
+
+        background: linear-gradient(to bottom, #ffaf4b 0%, #ff920a 100%);
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    .days {
+        font-size: 26px;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+
+        > td {
+            position: relative;
+
+            overflow: hidden;
+
+            cursor: pointer;
+            transition: color .3s, background-color .3s;
+
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            .task-indicators {
+                position: absolute;
+                bottom: 10px;
+                left: 10px;
+
+                width: calc(100% - 20px);
+                height: 8px;
+
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    width: 8px;
+                    height: 8px;
+
+                    float: left;
+
+                    border-radius: 50%;
+                }
+
+                li + li {
+                    margin-left: 5px;
+                }
+            }
+        }
+
+        > td:nth-child(6),
+        > td:nth-child(7) {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        > .faded {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        > .today {
+            background-color: #FF920A;
+            border-radius: 3px;
+        }
+
+        > .popover-active {
+            background-color: @blue !important;
+            border-radius: 3px;
+            color: white;
+
+            .task-indicators li {
+                background-color: white !important;
+            }
+        }
+    }
+
+    table {
+        width: 100%;
+        height: 100%;
+
+        border-collapse: collapse;
+    }
+
+    td {
+        width: calc(100% / 7);
+        text-align: center;
+    }
+}
+
+.day-popover-container {
+    width: 400px;
+    max-width: 100%;
+    height: 500px;
+
+    box-shadow: 0 5px 30px rgba(0, 0, 0, .2);
+
+    &.right {
+        margin-left: -30px;
+    }
+
+    [role=tooltip] {
+        height: 100%;
+    }
+
+    .popover-content.day-popover {
+        height: 100%;
+
+        padding: 0;
+
+        day-panel {
+            height: 100%;
+        }
+    }
+}
+
+day-panel {
+    position: relative;
+    display: block;
+    overflow: hidden;
+
+    .add,
+    .list {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        background-color: white;
+    }
+
+    .add {
+        form {
+            flex: 1;
+            padding: 5px;
+
+            display: flex;
+            flex-direction: column;
+
+            input {
+                min-height: 40px;
+            }
+
+            .control + .control {
+                margin-top: 10px;
+            }
+
+            textarea {
+                flex: 1;
+            }
+
+            .btn-group {
+                display: flex;
+
+                > label {
+                    flex: 1;
+
+                    > input {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .list {
+        .message {
+            flex: 1;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            > h1 {
+                text-align: center;
+                font-size: 20px;
+                color: gray;
+            }
+        }
+
+        .tasks {
+            flex: 1;
+            margin-bottom: 0;
+
+            overflow: auto;
+
+            > .task {
+                position: relative;
+
+                border-top: none;
+                border-right: none;
+                border-bottom: none;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                border-left-style: solid !important;
+                border-left-width: 5px !important;
+
+                padding-right: 25px;
+
+                &:hover {
+                    > .controls {
+                        opacity: 1;
+                    }
+                }
+
+                > .controls {
+                    position: absolute;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+
+                    opacity: 0;
+                    transition: opacity .3s;
+
+                    top: 0;
+                    right: 0;
+
+                    height: 100%;
+                    padding: 4px;
+
+                    color: inherit;
+
+                    > button {
+                        padding: 0;
+                        color: inherit;
+                    }
+
+                    > .mark-as-done:hover {
+                        color: @green;
+                    }
+
+                    > .delete:hover {
+                        color: @red;
+                    }
+
+                    > .edit:hover {
+                        color: @orange;
+                    }
+                }
+            }
+        }
+    }
+
+    .buttons {
+        height: 44px;
+        padding: 5px;
+
+        box-sizing: content-box;
+
+        display: flex;
+
+        > button i {
+            font-size: 12px;
+        }
+
+        button + button {
+            margin-left: 5px;
+        }
+
+        .fill-1 {
+            flex: 1;
+        }
+
+        .fill-2 {
+            flex: 2;
+        }
+    }
+}
+
+.animate-slide-left {
+    transition: all .5s;
+    transform: translateX(0);
+
+    &.ng-hide {
+        transform: translateX(-100%);
+    }
+}
+
+.animate-slide-right {
+    transition: all .5s;
+    transform: translateX(0);
+
+    &.ng-hide {
+        transform: translateX(100%);
+    }
+}
+
+.priority-0 {
+    &.background {
+        background-color: @green;
+    }
+
+    &.border {
+        border-color: @green;
+    }
+}
+
+.priority-1 {
+    &.background {
+        background-color: @blue;
+    }
+
+    &.border {
+        border-color: @blue;
+    }
+}
+
+.priority-2 {
+    &.background {
+        background-color: @orange;
+    }
+
+    &.border {
+        border-color: @orange;
+    }
+}
+
+.priority-3 {
+    &.background {
+        background-color: @red;
+    }
+
+    &.border {
+        border-color: @red;
+    }
+}

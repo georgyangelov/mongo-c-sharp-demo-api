@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html ng-app="calendar">
+<head>
+    <meta charset="utf-8">
+
+    <title>Calendar App</title>
+
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans&amp;subset=latin,cyrillic-ext">
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet/less" type="text/css" href="style/style.less">
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/less/dist/less-1.7.5.min.js"></script>
+    <script src="bower_components/moment/min/moment-with-locales.min.js"></script>
+
+    <script>
+        moment.locale('bg');
+        window.api_base_url = 'http://localhost:50592/api';
+    </script>
+
+    <script src="app/app.js"></script>
+
+    <script src="app/factories/task.js"></script>
+
+    <script src="app/controllers/calendar.js"></script>
+    <script src="app/controllers/day_panel.js"></script>
+
+    <script src="app/directives/calendar.js"></script>
+    <script src="app/directives/day_panel.js"></script>
+    <script src="app/directives/day_popover.js"></script>
+    <script src="app/directives/confirm.js"></script>
+</head>
+<body>
+    <calendar></calendar>
+</body>
+</html>

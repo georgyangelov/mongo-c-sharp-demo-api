@@ -1,0 +1,52 @@
+<div class="add animate-slide-right" ng-show="add_task_state">
+    <form class="add-task">
+        <input ng-model="task.title" type="text" class="form-control control" placeholder="What do you need to do?">
+
+        <textarea ng-model="task.text" type="text" class="form-control control" placeholder="Tell me more about it..."></textarea>
+
+        <div class="btn-group control">
+            <label class="btn btn-success" ng-class="{active: task.priority == 0}">
+                <input type="radio" ng-model="task.priority" name="priority" ng-value="0" checked> Normal
+            </label>
+            <label class="btn btn-primary" ng-class="{active: task.priority == 1}">
+                <input type="radio" ng-model="task.priority" name="priority" ng-value="1"> Important
+            </label>
+            <label class="btn btn-warning" ng-class="{active: task.priority == 2}">
+                <input type="radio" ng-model="task.priority" name="priority" ng-value="2"> Critical
+            </label>
+            <label class="btn btn-danger" ng-class="{active: task.priority == 3}">
+                <input type="radio" ng-model="task.priority" name="priority" ng-value="3"> Nuclear
+            </label>
+        </div>
+    </form>
+
+    <div class="buttons">
+        <button class="btn btn-default cancel-button fill-1" ng-click="cancel_add_task()"><i class="glyphicon glyphicon-chevron-left"></i> Cancel</button>
+        <button class="btn btn-success submit-button fill-2" ng-click="add_task()"><i class="glyphicon glyphicon-ok"></i> Add task</button>
+    </div>
+</div>
+<div class="list animate-slide-left" ng-hide="add_task_state">
+    <div ng-hide="tasks.length > 0" class="message">
+        <h1>No tasks for the day! So lazy...</h1>
+    </div>
+
+    <div ng-show="tasks.length > 0" class="tasks list-group">
+        <a ng-repeat="task in tasks" href="#" class="list-group-item task priority-{{task.priority}} border">
+            <h4 class="list-group-item-heading">
+                <i ng-if="task.completed" class="glyphicon glyphicon-ok"></i>
+                {{task.title}}
+            </h4>
+            <p class="list-group-item-text">{{task.text}}</p>
+
+            <div class="controls">
+                <button class="mark-as-done btn btn-link" ng-click="mark_task_as_completed(task)"><i class="glyphicon glyphicon-ok"></i></button>
+                <button class="delete btn btn-link" confirm="Are you really sure you don't want to do this task?" ng-click="delete_task(task)"><i class="glyphicon glyphicon-trash"></i></button>
+                <button ng-click="show_add_task(task)" class="edit btn btn-link"><i class="glyphicon glyphicon-pencil"></i></button>
+            </div>
+        </a>
+    </div>
+
+    <div class="buttons">
+        <button class="btn btn-primary new fill-1" ng-click="show_add_task()"><i class="glyphicon glyphicon-plus"></i> New task! Go go go!</button>
+    </div>
+</div>

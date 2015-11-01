@@ -1,0 +1,26 @@
+<table>
+    <tr class="months">
+        <td colspan="2" class="other"><a ng-click="previous_month()">{{date.clone().subtract(1, 'months').format('MMMM')}}</a></td>
+        <td colspan="3">{{date.format('MMMM YYYY')}}</td>
+        <td colspan="2" class="other"><a ng-click="next_month()">{{date.clone().add(1, 'months').format('MMMM')}}</a></td>
+    </tr>
+    <tr class="day_names">
+        <td>Понеделник</td>
+        <td>Вторник</td>
+        <td>Сряда</td>
+        <td>Четвъртък</td>
+        <td>Петък</td>
+        <td>Събота</td>
+        <td>Неделя</td>
+    </tr>
+
+    <tr ng-repeat="week in weeks" class="days">
+        <td ng-repeat="day in week track by $index" day-popover="{{day.date.format('YYYY-M-D')}}" popover-position="{{$index > 3 ? 'left' : 'right'}}" ng-class="{faded: day.other, today: day.today}">
+            {{day.number}}
+
+            <ul class="task-indicators">
+                <li ng-repeat="task in day.tasks" class="priority-{{task.priority}} background"></li>
+            </ul>
+        </td>
+    </tr>
+</table>
